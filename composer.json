@@ -1,0 +1,31 @@
+{
+  "name": ":repo_path",
+  "description": ":description",
+  "keywords": [],
+  "homepage": "https://github.com/:repo_path",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": ":author_name",
+      "email": ":author_email",
+      "homepage": ":author_website",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "4.*"
+  },
+  "autoload": {
+    "psr-4": {
+      ":repository\\:package\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      ":repository\\:package\\Test\\": "tests"
+    }
+  }
+}
