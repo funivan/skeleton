@@ -14,14 +14,18 @@ showHelp(){
         Repository name. --repository=Fiv
         
     $r --package $e *      
-        Package name. --package=Parser
+        Package name. --package=ParserAdapter
                  
     $s --description $e
         Deskription of package
          
+    $s --packagist_package $e
+        Packagist package path. By default it is combined with --repository and --package in lower case and with some manipulations
+        --repo-path=fiv/parser-adapter
+
     $s --repo_path $e
-        Repository path. By default it is combined with --repository and --package in lower case and with some manipulations
-        --repo-path=fiv/parser
+        Repository path. By default it is combined with --repository and --package. Repository trantransformed to lower case 
+        --repo-path=fiv/ParserAdapter
           
     $s --author_github_name $e
         Author github name. 
@@ -78,6 +82,10 @@ for i in "$@"; do
         repo_path="${i#*=}"
     shift;;
     
+    --packagist_package=*)
+        packagist_package="${i#*=}"
+    shift;;
+    
     --author_github_name=*)
         author_github_name="${i#*=}"
     shift;;
@@ -121,13 +129,18 @@ if [[ -z "$repository" || -z "$package" ]]; then
 fi;
 
 
-if [[ -z "$repo_path" ]]; then
-  repo_path_first=`echo $repository | sed 's/\(.\)\([A-Z]\)/\1-\2/g'` 
-  repo_path_second=`echo $package | sed 's/\(.\)\([A-Z]\)/\1-\2/g'` 
-  repo_path=`echo $repo_path_first/$repo_path_second | sed 's/--/-/g'`
+if [[ -z "$packagist_package" ]]; then
+  packagist_package_first=`echo $repository | sed 's/\(.\)\([A-Z]\)/\1-\2/g'` 
+  packagist_package_second=`echo $package | sed 's/\(.\)\([A-Z]\)/\1-\2/g'` 
+  packagist_package=`echo $packagist_package_first/$packagist_package_second | sed 's/--/-/g'`
+  packagist_package=`echo $packagist_package | tr '[:upper:]' '[:lower:]'`
 fi
 
-repo_path=`echo $repo_path | tr '[:upper:]' '[:lower:]'`
+if [[ -z "$repo_path" ]]; then
+  repo_path_first=`echo $repository | sed 's/\(.\)\([A-Z]\)/\1-\2/g' | tr '[:upper:]' '[:lower:]'`
+  repo_path=`echo $repo_path_first/$package | sed 's/--/-/g'`
+fi
+
 
 
 if [[ -z "$author_name" ]]; then
@@ -141,7 +154,7 @@ fi
 
 
 
-declare -a variables=("repository" "package"  "description" "repo_path" "author_github_name" "author_name" "author_email" "author_website" "year")
+declare -a variables=("repository" "package"  "description" "packagist_package" "repo_path" "author_github_name" "author_name" "author_email" "author_website" "year")
 padlength=30
 pad=$(printf '%0.1s' " "{1..60})
 
