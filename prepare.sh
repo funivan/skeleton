@@ -130,15 +130,16 @@ fi
 repo_path=`echo $repo_path | tr '[:upper:]' '[:lower:]'`
 
 
-if [[ -z "$author_name" ]]; then
-  author_name=`git config --global --get user.name`
-fi
-if [[ -z "$author_email" ]]; then
-  author_email=`git config --global --get user.email`
-fi
-
-
-
+  declare -A fillVariables
+  fillVariables["author_name"]="user.name"
+  fillVariables["author_email"]="user.email"
+  fillVariables["author_website"]="user.website"
+  fillVariables["author_github_name"]="user.github-name"
+  
+  for key in ${!fillVariables[@]}; do
+      gitConfigKey=${fillVariables[${key}]}
+      declare "${key}"="`git config --global --get $gitConfigKey`"
+  done
 
 
 declare -a variables=("repository" "package"  "description" "repo_path" "author_github_name" "author_name" "author_email" "author_website" "year")
