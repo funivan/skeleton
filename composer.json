@@ -1,5 +1,5 @@
 {
-  "name": ":repo_path",
+  "name": ":packagist_package",
   "description": ":description",
   "keywords": [],
   "homepage": "https://github.com/:repo_path",
