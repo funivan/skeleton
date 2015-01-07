@@ -1,6 +1,6 @@
 # :package
 
-[![Latest Version](https://img.shields.io/github/release/:repo_path.svg?style=flat-square)](https://github.com/:repo_path/releases)
+[![GitHub tag](https://img.shields.io/github/tag/:repo_path.svg?style=flat-square)](https://github.com/:repo_path/tags)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/:repo_path/master.svg?style=flat-square)](https://travis-ci.org/:repo_path)
 [![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/:repo_path.svg?style=flat-square)](https://scrutinizer-ci.com/g/:repo_path/code-structure)
