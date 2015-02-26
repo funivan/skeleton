@@ -1,6 +1,6 @@
 <?php
 
-  namespace :repository\:package\Test;
+  namespace Tests\:repository\:package;
 
   class BaseTest extends \PHPUnit_Framework_TestCase {
 

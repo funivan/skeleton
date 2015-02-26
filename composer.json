@@ -25,7 +25,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Test\\:repository\\:package\\": "tests"
+      "Tests\\:repository\\:package\\": "tests"
     }
   }
 }
