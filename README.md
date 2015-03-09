@@ -1,42 +1,33 @@
-# :package
+# Skeleton
 
-[![GitHub tag](https://img.shields.io/github/tag/:repo_path.svg?style=flat-square)](https://github.com/:repo_path/tags)
+[![Packagist](https://img.shields.io/packagist/v/funivan/skeleton.svg)](https://packagist.org/packages/funivan/skeleton)
+[![Build Status](https://img.shields.io/travis/funivan/skeleton/master.svg?style=flat-square)](https://travis-ci.org/funivan/skeleton)
+[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/funivan/skeleton.svg?style=flat-square)](https://scrutinizer-ci.com/g/funivan/skeleton/code-structure)
+[![Quality Score](https://img.shields.io/scrutinizer/g/funivan/skeleton.svg?style=flat-square)](https://scrutinizer-ci.com/g/funivan/skeleton)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/:repo_path/master.svg?style=flat-square)](https://travis-ci.org/:repo_path)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/:repo_path.svg?style=flat-square)](https://scrutinizer-ci.com/g/:repo_path/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/:repo_path.svg?style=flat-square)](https://scrutinizer-ci.com/g/:repo_path)
-[![Total Downloads](https://img.shields.io/packagist/dt/:packagist_package.svg?style=flat-square)](https://packagist.org/packages/:packagist_package)
+[![Total Downloads](https://img.shields.io/packagist/dt/funivan/skeleton.svg?style=flat-square)](https://packagist.org/packages/funivan/skeleton)
 
-:description
+Php package skeleton.
 
 ## Install
 
-Via Composer
+@todo you can install it only as phar package and use with command line  
 
-``` bash
-$ composer require :packagist_package
-```
 
 ## Usage
 
 ``` php
-
-```
-
-## Testing
-
-``` bash
-    ./vendor/bin/phpunit
+skeleton.phar ----repository=Test --package=Grab ; 
 ```
 
 ## Contributing
 
-Please see [CONTRIBUTING](https://github.com/:repo_path/blob/master/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/funivan/skeleton/blob/master/CONTRIBUTING.md) for details.
 
 ## Credits
 
-- [:author_github_name](https://github.com/:author_github_name)
-- [All Contributors](https://github.com/:repo_path/contributors)
+- [funivan](https://github.com/funivan)
+- [All Contributors](https://github.com/funivan/skeleton/contributors)
 
 ## License
 
