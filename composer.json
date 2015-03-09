@@ -1,14 +1,14 @@
 {
-  "name": ":packagist_package",
-  "description": ":description",
+  "name": "funivan/skeleton",
+  "description": "Skeleton for php packages ",
   "keywords": [],
-  "homepage": "https://github.com/:repo_path",
+  "homepage": "https://github.com/funivan/skeleton",
   "license": "MIT",
   "authors": [
     {
-      "name": ":author_name",
-      "email": ":author_email",
-      "homepage": ":author_website",
+      "name": "Ivan Scherbak",
+      "email": "dev@funivan.com",
+      "homepage": "http://funivan.com",
       "role": "Developer"
     }
   ],
@@ -20,12 +20,12 @@
   },
   "autoload": {
     "psr-4": {
-      ":repository\\:package\\": "src"
+      "Funivan\\Skeleton\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Tests\\:repository\\:package\\": "tests"
+      "Tests\\Funivan\\Skeleton\\": "tests"
     }
   }
 }
