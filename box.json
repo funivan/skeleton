@@ -1,0 +1,29 @@
+{
+  "output": "skeleton.phar",
+  "chmod": "0755",
+  "compactors": [
+    "Herrera\\Box\\Compactor\\Php"
+  ],
+  "extract": false,
+  "files": [
+    "bin/skeleton",
+    "LICENSE.md",
+    "README.md"
+  ],
+  "finder": [
+    {
+      "name": ["*.php", "*.twig"],
+      "exclude": [
+        "tests"
+      ],
+      "in": [
+        "templates",
+        "vendor",
+        "src"
+      ]
+    }
+  ],
+  "git-commit": "git-commit",
+  "stub": "bin/phar-stub.php",
+  "web": false
+}
