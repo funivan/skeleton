@@ -17,7 +17,7 @@ Php package skeleton.
 ## Usage
 
 ``` php
-skeleton.phar ----repository=Test --package=Grab ; 
+skeleton.phar --repository=Test --package=Grab ; 
 ```
 
 ## Contributing
