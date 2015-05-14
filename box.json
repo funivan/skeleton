@@ -12,7 +12,8 @@
   ],
   "finder": [
     {
-      "name": ["*.php", "*.twig"],
+      "name": ["*.php", "/.*\\.twig$/"],
+      "ignoreDotFiles": 0,
       "exclude": [
         "tests"
       ],

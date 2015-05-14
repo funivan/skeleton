@@ -1,6 +1,12 @@
 #!/bin/sh
 
 # Increase maximum opened files (required by box.phar):
+
+test -f composer.json || {
+  echo "Run this script from the root of project";
+  exit 1;
+}
+
 ulimit -Sn 2048
 
 # Download composer if it does not exist:
@@ -11,10 +17,10 @@ command -v composer || {
 
 # Download box if it does not exist:
 command -v box.phar || {
-  wget -O - http://box-project.org/installer.php | php -d detect_unicode=0
+  test -f box.phar || {
+    wget -O - http://box-project.org/installer.php | php -d detect_unicode=0
+  }
 }
-
-box="$(command -v box.phar)"
 
 ## Build mcc phar:
 composer install || exit 1
