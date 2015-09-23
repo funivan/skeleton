@@ -32,6 +32,8 @@
 
       $this->addOption('path', null, InputOption::VALUE_REQUIRED, "Repository path. Used on GitHub and Packagist links. It will be automatically generated from repository and package options");
 
+      $this->addOption('github_repository_path', null, InputOption::VALUE_REQUIRED, 'Github repository url');
+
       $this->addOption('author_github_name', null, InputOption::VALUE_REQUIRED, 'Author github nickname', $this->getDefaultValueFromGit('user.github-name'));
       $this->addOption('author_name', null, InputOption::VALUE_REQUIRED, 'Author name', $this->getDefaultValueFromGit('user.name'));
       $this->addOption('author_email', null, InputOption::VALUE_REQUIRED, 'Author email address', $this->getDefaultValueFromGit('user.email'));
@@ -43,6 +45,7 @@
 
       parent::configure();
     }
+
 
     /**
      * @inheritdoc
@@ -82,10 +85,16 @@
 
       $destination = $input->getOption('destination');
 
-      $configuration = array(
+      $githubRepositoryPath = $input->getOption('github_repository_path');
+      if (empty($githubRepositoryPath)) {
+        $githubRepositoryPath = $repository . '/' . $package;
+      }
+
+      $configuration = [
         'repository' => $repository,
         'package' => $package,
         'path' => $path,
+        'github_repository_path' => $githubRepositoryPath,
         'description' => $input->getOption('description'),
         'author_github_name' => $input->getOption('author_github_name'),
         'author_name' => $input->getOption('author_name'),
@@ -93,13 +102,13 @@
         'author_website' => $input->getOption('author_website'),
         'year' => $input->getOption('year'),
         'destination' => $destination,
-      );
+      ];
 
       /** @var Table $table */
       $table = new Table($output);
-      $table->setHeaders(array('Key', 'Value'));
+      $table->setHeaders(['Key', 'Value']);
       foreach ($configuration as $key => $value) {
-        $table->addRow(array($key, $value));
+        $table->addRow([$key, $value]);
       }
       $table->render();
 
@@ -159,7 +168,7 @@
 
 
         $template = $twig->loadTemplate($file->getRelativePathname());
-        $fileData = $template->render(array());
+        $fileData = $template->render([]);
 
 
         if (!file_put_contents($destinationFile, $fileData)) {
@@ -171,6 +180,7 @@
       }
 
     }
+
 
     /**
      * @param string $key
