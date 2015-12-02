@@ -1,5 +1,5 @@
 {
-  "output": "skeleton.phar",
+  "output": "build/skeleton.phar",
   "chmod": "0755",
   "compactors": [
     "Herrera\\Box\\Compactor\\Php"

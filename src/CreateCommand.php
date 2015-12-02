@@ -11,6 +11,7 @@
   use Symfony\Component\Console\Output\OutputInterface;
   use Symfony\Component\Console\Question\ConfirmationQuestion;
   use Symfony\Component\Finder\Finder;
+  use Symfony\Component\Finder\SplFileInfo;
   use Symfony\Component\Process\Process;
 
   /**
@@ -151,6 +152,7 @@
       $finder = new Finder();
       $finder->files()->in($templatesDir)->ignoreDotFiles(false);
 
+      /** @var SplFileInfo $file */
       foreach ($finder as $file) {
 
         $destinationDir = $destination . '/' . $file->getRelativePath();
@@ -192,14 +194,22 @@
         throw new \InvalidArgumentException("Invalid key. Expect not empty string");
       }
 
-      $process = new Process('git config --global --get ' . $key);
+      $process = new Process('git config --global --list');
       $process->run();
 
       if (!$process->isSuccessful()) {
         throw new \RuntimeException($process->getErrorOutput());
       }
 
-      return trim($process->getOutput());
+
+      $output = $process->getOutput();
+
+      preg_match('!' . preg_quote($key) . '=(.+)$!', $output, $data);
+      if (!empty($data[1])) {
+        return trim($data[1]);
+      }
+
+      return '';
     }
 
   }
